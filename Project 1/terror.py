@@ -16,4 +16,5 @@ df.describe()
 
 terror = df[["country_txt", "attacktype1", "targtype1"]]
 
-G=nx.from_pandas_dataframe(terror, "country", "attack", "target")
+G=nx.from_pandas_dataframe(terror, "country_txt", "attacktype1", "targtype1")
+print (nx.info(G))
