@@ -1,0 +1,85 @@
+---
+title: "Your Document Title"
+author: "Document Author"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+gtd<- read_csv("global_terror_data.csv")
+```
+
+
+```{r}
+gtd<- 
+  gtd %>% 
+  filter(iyear >= 1985)
+head(gtd, 40)
+```
+
+```{r}
+colnames(gtd)
+```
+
+```{r}
+gtd_sub<- 
+  gtd %>%
+  select(iyear, imonth, iday, country_txt, summary,
+         success, attacktype1, attacktype1_txt, target1,
+         targtype1_txt, claimed, gname, weaptype1, weaptype1_txt,
+         nkill)
+```
+
+
+
+```{r}
+gtd_sub<-
+  gtd_sub %>% 
+  mutate(
+    gname = case_when(
+      str_detect(gname, "White suprem.*") ~ "White supremacists/nationalists",
+      str_detect(gname, "Ku Klux") ~ "White supremacists/nationalists",
+      str_detect(gname, "White Rabbit") ~ "White supremacists/nationalists",
+      str_detect(gname, "White Liberation") ~ "White supremacists/nationalists",
+      TRUE ~ gname
+    )
+  )
+```
+
+
+
+```{r}
+gtd_sub<- 
+  gtd_sub %>%
+  mutate(
+    gname = case_when(
+      str_detect(gname, "Islamic State") ~ paste("ISIS network: ", gname),
+      str_detect(gname, "Al-Qaida") ~ paste("Al-Qaida network: ", gname),
+    TRUE ~ gname))
+```
+
+
+```{r}
+gtd_sub %>%
+  filter(str_detect(gname, "Al-Qaida")) %>%
+  group_by(gname) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+```
+
+
+
+
+
+
+
+
+```{r}
+write_csv(gtd, "global_terror_data_proj_1.csv")
+```
+
+
