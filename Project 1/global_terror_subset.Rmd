@@ -79,7 +79,7 @@ gtd_sub %>%
 
 
 ```{r}
-write_csv(gtd, "global_terror_data_proj_1.csv")
+#write_csv(gtd, "global_terror_data_proj_1.csv")
 ```
 
 
