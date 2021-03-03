@@ -29,7 +29,7 @@ colnames(gtd)
 gtd_sub<- 
   gtd %>%
   select(iyear, imonth, iday, country_txt, summary,
-         success, attacktype1, attacktype1_txt, target1,
+         success, attacktype1, attacktype1_txt, target1, targtype1,
          targtype1_txt, claimed, gname, weaptype1, weaptype1_txt,
          nkill)
 ```
@@ -73,13 +73,8 @@ gtd_sub %>%
 
 
 
-
-
-
-
-
 ```{r}
-#write_csv(gtd, "global_terror_data_proj_1.csv")
+write_csv(gtd_sub, "global_terror_data_proj_1.csv")
 ```
 
 
