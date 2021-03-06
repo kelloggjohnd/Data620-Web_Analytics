@@ -1,0 +1,116 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>None</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Israel", "label": "Israel", "shape": "dot"}, {"font": {"color": "white"}, "id": "Bombing/Explosion", "label": "Bombing/Explosion", "shape": "dot"}, {"font": {"color": "white"}, "id": "Iran", "label": "Iran", "shape": "dot"}, {"font": {"color": "white"}, "id": "Pakistan", "label": "Pakistan", "shape": "dot"}, {"font": {"color": "white"}, "id": "Turkey", "label": "Turkey", "shape": "dot"}, {"font": {"color": "white"}, "id": "Assassination", "label": "Assassination", "shape": "dot"}, {"font": {"color": "white"}, "id": "Syria", "label": "Syria", "shape": "dot"}, {"font": {"color": "white"}, "id": "Facility/Infrastructure Attack", "label": "Facility/Infrastructure Attack", "shape": "dot"}, {"font": {"color": "white"}, "id": "Armed Assault", "label": "Armed Assault", "shape": "dot"}, {"font": {"color": "white"}, "id": "Unknown", "label": "Unknown", "shape": "dot"}, {"font": {"color": "white"}, "id": "Hijacking", "label": "Hijacking", "shape": "dot"}, {"font": {"color": "white"}, "id": "Hostage Taking (Kidnapping)", "label": "Hostage Taking (Kidnapping)", "shape": "dot"}, {"font": {"color": "white"}, "id": "Afghanistan", "label": "Afghanistan", "shape": "dot"}, {"font": {"color": "white"}, "id": "Unarmed Assault", "label": "Unarmed Assault", "shape": "dot"}, {"font": {"color": "white"}, "id": "Iraq", "label": "Iraq", "shape": "dot"}, {"font": {"color": "white"}, "id": "Hostage Taking (Barricade Incident)", "label": "Hostage Taking (Barricade Incident)", "shape": "dot"}, {"font": {"color": "white"}, "id": "Jordan", "label": "Jordan", "shape": "dot"}]);
+        edges = new vis.DataSet([{"from": "Israel", "to": "Bombing/Explosion"}, {"from": "Israel", "to": "Facility/Infrastructure Attack"}, {"from": "Israel", "to": "Assassination"}, {"from": "Israel", "to": "Armed Assault"}, {"from": "Israel", "to": "Unknown"}, {"from": "Israel", "to": "Hijacking"}, {"from": "Israel", "to": "Hostage Taking (Kidnapping)"}, {"from": "Israel", "to": "Unarmed Assault"}, {"from": "Bombing/Explosion", "to": "Iran"}, {"from": "Bombing/Explosion", "to": "Pakistan"}, {"from": "Bombing/Explosion", "to": "Syria"}, {"from": "Bombing/Explosion", "to": "Turkey"}, {"from": "Bombing/Explosion", "to": "Afghanistan"}, {"from": "Bombing/Explosion", "to": "Jordan"}, {"from": "Bombing/Explosion", "to": "Iraq"}, {"from": "Iran", "to": "Assassination"}, {"from": "Iran", "to": "Unknown"}, {"from": "Iran", "to": "Armed Assault"}, {"from": "Iran", "to": "Hijacking"}, {"from": "Iran", "to": "Facility/Infrastructure Attack"}, {"from": "Iran", "to": "Hostage Taking (Kidnapping)"}, {"from": "Iran", "to": "Hostage Taking (Barricade Incident)"}, {"from": "Pakistan", "to": "Armed Assault"}, {"from": "Pakistan", "to": "Hijacking"}, {"from": "Pakistan", "to": "Assassination"}, {"from": "Pakistan", "to": "Hostage Taking (Kidnapping)"}, {"from": "Pakistan", "to": "Facility/Infrastructure Attack"}, {"from": "Pakistan", "to": "Unknown"}, {"from": "Pakistan", "to": "Unarmed Assault"}, {"from": "Pakistan", "to": "Hostage Taking (Barricade Incident)"}, {"from": "Turkey", "to": "Assassination"}, {"from": "Turkey", "to": "Facility/Infrastructure Attack"}, {"from": "Turkey", "to": "Armed Assault"}, {"from": "Turkey", "to": "Unknown"}, {"from": "Turkey", "to": "Hostage Taking (Kidnapping)"}, {"from": "Turkey", "to": "Hostage Taking (Barricade Incident)"}, {"from": "Turkey", "to": "Unarmed Assault"}, {"from": "Turkey", "to": "Hijacking"}, {"from": "Assassination", "to": "Syria"}, {"from": "Assassination", "to": "Iraq"}, {"from": "Assassination", "to": "Afghanistan"}, {"from": "Assassination", "to": "Jordan"}, {"from": "Syria", "to": "Armed Assault"}, {"from": "Syria", "to": "Facility/Infrastructure Attack"}, {"from": "Syria", "to": "Hostage Taking (Kidnapping)"}, {"from": "Syria", "to": "Unknown"}, {"from": "Syria", "to": "Hijacking"}, {"from": "Syria", "to": "Unarmed Assault"}, {"from": "Syria", "to": "Hostage Taking (Barricade Incident)"}, {"from": "Facility/Infrastructure Attack", "to": "Jordan"}, {"from": "Facility/Infrastructure Attack", "to": "Iraq"}, {"from": "Facility/Infrastructure Attack", "to": "Afghanistan"}, {"from": "Armed Assault", "to": "Iraq"}, {"from": "Armed Assault", "to": "Jordan"}, {"from": "Armed Assault", "to": "Afghanistan"}, {"from": "Unknown", "to": "Iraq"}, {"from": "Unknown", "to": "Jordan"}, {"from": "Unknown", "to": "Afghanistan"}, {"from": "Hijacking", "to": "Afghanistan"}, {"from": "Hijacking", "to": "Iraq"}, {"from": "Hostage Taking (Kidnapping)", "to": "Iraq"}, {"from": "Hostage Taking (Kidnapping)", "to": "Afghanistan"}, {"from": "Afghanistan", "to": "Unarmed Assault"}, {"from": "Afghanistan", "to": "Hostage Taking (Barricade Incident)"}, {"from": "Unarmed Assault", "to": "Iraq"}, {"from": "Iraq", "to": "Hostage Taking (Barricade Incident)"}, {"from": "Hostage Taking (Barricade Incident)", "to": "Jordan"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -80000,
+            "springConstant": 0.001,
+            "springLength": 250
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
