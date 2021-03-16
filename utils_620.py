@@ -1,16 +1,19 @@
 # Import these to you notebook of choice
+import networkx as nx
+import pandas as pd
 
-def get_metric(metric_name, network):
+
+def _get_metric(metric_name, network):
     metric_dict = {
-        "degree":nx.degree_centrality(network),
-        "eigen":nx.eigenvector_centrality_numpy(network),
-        "close":nx.closeness_centrality(network),
-        "between":nx.betweenness_centrality(network)
+        "degree": nx.degree_centrality(network),
+        "eigen": nx.eigenvector_centrality_numpy(network),
+        "close": nx.closeness_centrality(network),
+        "between": nx.betweenness_centrality(network)
     }
     return metric_dict[metric_name]
 
 def make_centrality(network, metric_name):
-    metric = get_metric(metric_name, network)
+    metric = _get_metric(metric_name, network)
     _sort=sorted(metric.items(),
           key=lambda x:x[1], 
           reverse=True)
