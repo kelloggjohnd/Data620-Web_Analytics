@@ -50,8 +50,8 @@
         
 
         // parsing and collecting nodes and edges from the python
-        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Muslim extremists", "label": "Muslim extremists", "shape": "dot"}, {"font": {"color": "white"}, "id": "Unknown", "label": "Unknown", "shape": "dot"}]);
-        edges = new vis.DataSet([{"from": "Muslim extremists", "to": "Unknown"}]);
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Unknown", "label": "Unknown", "shape": "dot"}, {"font": {"color": "white"}, "id": "Muslim extremists", "label": "Muslim extremists", "shape": "dot"}]);
+        edges = new vis.DataSet([{"from": "Unknown", "to": "Muslim extremists"}]);
 
         // adding nodes and edges to the graph
         data = {nodes: nodes, edges: edges};
