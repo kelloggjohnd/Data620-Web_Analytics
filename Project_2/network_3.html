@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
 <center>
-<h1></h1>
+<h1>None</h1>
 </center>
 
 <!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
@@ -51,7 +51,7 @@
 
         // parsing and collecting nodes and edges from the python
         nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Lebanon", "label": "Lebanon", "shape": "dot"}, {"font": {"color": "white"}, "id": "Iran", "label": "Iran", "shape": "dot"}, {"font": {"color": "white"}, "id": "Pakistan", "label": "Pakistan", "shape": "dot"}, {"font": {"color": "white"}, "id": "Turkey", "label": "Turkey", "shape": "dot"}, {"font": {"color": "white"}, "id": "Syria", "label": "Syria", "shape": "dot"}, {"font": {"color": "white"}, "id": "Afghanistan", "label": "Afghanistan", "shape": "dot"}, {"font": {"color": "white"}, "id": "Iraq", "label": "Iraq", "shape": "dot"}, {"font": {"color": "white"}, "id": "Jordan", "label": "Jordan", "shape": "dot"}]);
-        edges = new vis.DataSet([{"from": "Lebanon", "to": "Iran"}, {"from": "Lebanon", "to": "Jordan"}, {"from": "Lebanon", "to": "Afghanistan"}, {"from": "Lebanon", "to": "Iraq"}, {"from": "Lebanon", "to": "Pakistan"}, {"from": "Lebanon", "to": "Turkey"}, {"from": "Lebanon", "to": "Syria"}, {"from": "Iran", "to": "Jordan"}, {"from": "Iran", "to": "Afghanistan"}, {"from": "Iran", "to": "Iraq"}, {"from": "Iran", "to": "Pakistan"}, {"from": "Iran", "to": "Turkey"}, {"from": "Iran", "to": "Syria"}, {"from": "Pakistan", "to": "Jordan"}, {"from": "Pakistan", "to": "Afghanistan"}, {"from": "Pakistan", "to": "Iraq"}, {"from": "Pakistan", "to": "Turkey"}, {"from": "Pakistan", "to": "Syria"}, {"from": "Turkey", "to": "Jordan"}, {"from": "Turkey", "to": "Afghanistan"}, {"from": "Turkey", "to": "Iraq"}, {"from": "Turkey", "to": "Syria"}, {"from": "Syria", "to": "Jordan"}, {"from": "Syria", "to": "Afghanistan"}, {"from": "Syria", "to": "Iraq"}, {"from": "Afghanistan", "to": "Jordan"}, {"from": "Afghanistan", "to": "Iraq"}, {"from": "Iraq", "to": "Jordan"}]);
+        edges = new vis.DataSet([{"from": "Lebanon", "to": "Turkey"}, {"from": "Lebanon", "to": "Syria"}, {"from": "Lebanon", "to": "Iraq"}, {"from": "Lebanon", "to": "Pakistan"}, {"from": "Lebanon", "to": "Jordan"}, {"from": "Lebanon", "to": "Afghanistan"}, {"from": "Lebanon", "to": "Iran"}, {"from": "Iran", "to": "Turkey"}, {"from": "Iran", "to": "Syria"}, {"from": "Iran", "to": "Iraq"}, {"from": "Iran", "to": "Pakistan"}, {"from": "Iran", "to": "Jordan"}, {"from": "Iran", "to": "Afghanistan"}, {"from": "Pakistan", "to": "Iraq"}, {"from": "Pakistan", "to": "Syria"}, {"from": "Pakistan", "to": "Turkey"}, {"from": "Pakistan", "to": "Jordan"}, {"from": "Pakistan", "to": "Afghanistan"}, {"from": "Turkey", "to": "Syria"}, {"from": "Turkey", "to": "Iraq"}, {"from": "Turkey", "to": "Jordan"}, {"from": "Turkey", "to": "Afghanistan"}, {"from": "Syria", "to": "Iraq"}, {"from": "Syria", "to": "Jordan"}, {"from": "Syria", "to": "Afghanistan"}, {"from": "Afghanistan", "to": "Iraq"}, {"from": "Afghanistan", "to": "Jordan"}, {"from": "Iraq", "to": "Jordan"}]);
 
         // adding nodes and edges to the graph
         data = {nodes: nodes, edges: edges};
@@ -99,7 +99,7 @@
         
 
         network = new vis.Network(container, data, options);
-	 
+
         
 
 

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
 <center>
-<h1></h1>
+<h1>None</h1>
 </center>
 
 <!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
@@ -50,8 +50,8 @@
         
 
         // parsing and collecting nodes and edges from the python
-        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Islamist extremists", "label": "Islamist extremists", "shape": "dot"}, {"font": {"color": "white"}, "id": "Unknown", "label": "Unknown", "shape": "dot"}, {"font": {"color": "white"}, "id": "Gunmen", "label": "Gunmen", "shape": "dot"}, {"font": {"color": "white"}, "id": "Muslim extremists", "label": "Muslim extremists", "shape": "dot"}, {"font": {"color": "white"}, "id": "ISIS network:  Islamic State of Iraq and the Levant (ISIL)", "label": "ISIS network:  Islamic State of Iraq and the Levant (ISIL)", "shape": "dot"}]);
-        edges = new vis.DataSet([{"from": "Islamist extremists", "to": "Unknown"}, {"from": "Islamist extremists", "to": "Gunmen"}, {"from": "Islamist extremists", "to": "Muslim extremists"}, {"from": "Unknown", "to": "Gunmen"}, {"from": "Unknown", "to": "Muslim extremists"}, {"from": "Unknown", "to": "ISIS network:  Islamic State of Iraq and the Levant (ISIL)"}, {"from": "Gunmen", "to": "Muslim extremists"}, {"from": "Muslim extremists", "to": "ISIS network:  Islamic State of Iraq and the Levant (ISIL)"}]);
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Unknown", "label": "Unknown", "shape": "dot"}, {"font": {"color": "white"}, "id": "Islamist extremists", "label": "Islamist extremists", "shape": "dot"}, {"font": {"color": "white"}, "id": "Gunmen", "label": "Gunmen", "shape": "dot"}, {"font": {"color": "white"}, "id": "ISIS network:  Islamic State of Iraq and the Levant (ISIL)", "label": "ISIS network:  Islamic State of Iraq and the Levant (ISIL)", "shape": "dot"}, {"font": {"color": "white"}, "id": "Muslim extremists", "label": "Muslim extremists", "shape": "dot"}]);
+        edges = new vis.DataSet([{"from": "Unknown", "to": "Islamist extremists"}, {"from": "Unknown", "to": "Gunmen"}, {"from": "Unknown", "to": "ISIS network:  Islamic State of Iraq and the Levant (ISIL)"}, {"from": "Unknown", "to": "Muslim extremists"}, {"from": "Islamist extremists", "to": "Gunmen"}, {"from": "Islamist extremists", "to": "Muslim extremists"}, {"from": "Gunmen", "to": "Muslim extremists"}, {"from": "ISIS network:  Islamic State of Iraq and the Levant (ISIL)", "to": "Muslim extremists"}]);
 
         // adding nodes and edges to the graph
         data = {nodes: nodes, edges: edges};
@@ -99,7 +99,7 @@
         
 
         network = new vis.Network(container, data, options);
-	 
+
         
 
 
