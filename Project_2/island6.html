@@ -50,8 +50,8 @@
         
 
         // parsing and collecting nodes and edges from the python
-        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Turkey", "label": "Turkey", "shape": "dot"}, {"font": {"color": "white"}, "id": "Iraq", "label": "Iraq", "shape": "dot"}, {"font": {"color": "white"}, "id": "Pakistan", "label": "Pakistan", "shape": "dot"}, {"font": {"color": "white"}, "id": "Syria", "label": "Syria", "shape": "dot"}, {"font": {"color": "white"}, "id": "Lebanon", "label": "Lebanon", "shape": "dot"}, {"font": {"color": "white"}, "id": "Afghanistan", "label": "Afghanistan", "shape": "dot"}]);
-        edges = new vis.DataSet([{"from": "Turkey", "to": "Iraq"}, {"from": "Turkey", "to": "Pakistan"}, {"from": "Turkey", "to": "Syria"}, {"from": "Turkey", "to": "Lebanon"}, {"from": "Iraq", "to": "Pakistan"}, {"from": "Iraq", "to": "Syria"}, {"from": "Iraq", "to": "Lebanon"}, {"from": "Pakistan", "to": "Afghanistan"}, {"from": "Pakistan", "to": "Lebanon"}, {"from": "Syria", "to": "Lebanon"}]);
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "Muslim extremists", "label": "Muslim extremists", "shape": "dot"}, {"font": {"color": "white"}, "id": "Unknown", "label": "Unknown", "shape": "dot"}]);
+        edges = new vis.DataSet([{"from": "Muslim extremists", "to": "Unknown"}]);
 
         // adding nodes and edges to the graph
         data = {nodes: nodes, edges: edges};
