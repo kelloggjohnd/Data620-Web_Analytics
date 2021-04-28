@@ -1,0 +1,24 @@
+---
+title: "speeches"
+author: "John Kellogg"
+date: "4/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r}
+library(readr)
+corpus <- read_csv("CSPS work/620 - Web Analytics/data/corpus.csv")
+View(corpus)
+```
+
+```{r}
+obama <- corpus %>%
+  filter(X1 == "Barack Obama")%>%
+  select(transcripts)
+```
+
