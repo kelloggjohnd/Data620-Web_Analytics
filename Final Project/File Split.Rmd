@@ -1,5 +1,5 @@
 ---
-title: "speeches"
+title: "speeches file split"
 author: "John Kellogg"
 date: "4/27/2021"
 output: html_document
@@ -12,13 +12,89 @@ library(tidyverse)
 
 ```{r}
 library(readr)
-corpus <- read_csv("CSPS work/620 - Web Analytics/data/corpus.csv")
-View(corpus)
+corpus <- read_csv("data/corpus.csv")
+#View(corpus)
 ```
+
+```{r}
+trump <- corpus %>%
+  filter(X1 == "Donald Trump")%>%
+  select(transcripts)
+
+write.table(trump, file = "data/trump.txt", sep = "\t",row.names = FALSE)
+```   
 
 ```{r}
 obama <- corpus %>%
   filter(X1 == "Barack Obama")%>%
   select(transcripts)
+
+write.table(obama, file = "data/obama1.txt", sep = "\t",
+            row.names = FALSE)
+```
+
+```{r}
+bush_43 <- corpus %>%
+  filter(X1 == "George W. Bush")%>%
+  select(transcripts)
+
+write.table(bush_43, file = "data/bush43.txt", sep = "\t",
+            row.names = FALSE)
+```
+
+```{r}
+clinton <- corpus %>%
+  filter(X1 == "Bill Clinton")%>%
+  select(transcripts)
+
+write.table(clinton, file = "data/clinton.txt", sep = "\t",row.names = FALSE)
+``` 
+
+```{r}
+bush_41 <- corpus %>%
+  filter(X1 == "George H. W. Bush")%>%
+  select(transcripts)
+
+write.table(bush_41, file = "data/bush_41.txt", sep = "\t",row.names = FALSE)
+```
+
+```{r}
+washington <- corpus %>%
+  filter(X1 == "George Washington")%>%
+  select(transcripts)
+
+write.table(washington, file = "data/washington.txt", sep = "\t",row.names = FALSE)
+```
+
+```{r}
+adams <- corpus %>%
+  filter(X1 == "John Adams")%>%
+  select(transcripts)
+
+write.table(adams, file = "data/adams.txt", sep = "\t",row.names = FALSE)
+```
+
+```{r}
+roosevelt <- corpus %>%
+  filter(X1 == "Franklin D. Roosevelt")%>%
+  select(transcripts)
+
+write.table(roosevelt, file = "data/roosevelt.txt", sep = "\t",row.names = FALSE)
+```
+
+```{r}
+kennedy <- corpus %>%
+  filter(X1 == "John F. Kennedy")%>%
+  select(transcripts)
+
+write.table(kennedy, file = "data/kennedy.txt", sep = "\t",row.names = FALSE)
+```
+
+```{r}
+reagan <- corpus %>%
+  filter(X1 == "Ronald Reagan")%>%
+  select(transcripts)
+
+write.table(reagan, file = "data/reagan.txt", sep = "\t",row.names = FALSE)
 ```
 
