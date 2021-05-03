@@ -21,7 +21,7 @@ trump <- corpus %>%
   filter(X1 == "Donald Trump")%>%
   select(transcripts)
 
-write.table(trump, file = "data/trump.txt", sep = "\t",row.names = FALSE)
+write.table(trump, file = "data/trump.txt", sep = "\t",row.names = FALSE, fileEncoding = "UTF-8")
 ```   
 
 ```{r}
@@ -29,8 +29,7 @@ obama <- corpus %>%
   filter(X1 == "Barack Obama")%>%
   select(transcripts)
 
-write.table(obama, file = "data/obama1.txt", sep = "\t",
-            row.names = FALSE)
+write.table(obama, file = "data/obama1.txt", sep = "\t",row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 ```{r}
@@ -38,8 +37,7 @@ bush_43 <- corpus %>%
   filter(X1 == "George W. Bush")%>%
   select(transcripts)
 
-write.table(bush_43, file = "data/bush43.txt", sep = "\t",
-            row.names = FALSE)
+write.table(bush_43, file = "data/bush43.txt", sep = "\t",row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 ```{r}
@@ -47,7 +45,7 @@ clinton <- corpus %>%
   filter(X1 == "Bill Clinton")%>%
   select(transcripts)
 
-write.table(clinton, file = "data/clinton.txt", sep = "\t",row.names = FALSE)
+write.table(clinton, file = "data/clinton.txt", sep = "\t",row.names = FALSE, fileEncoding = "UTF-8")
 ``` 
 
 ```{r}
@@ -55,7 +53,7 @@ bush_41 <- corpus %>%
   filter(X1 == "George H. W. Bush")%>%
   select(transcripts)
 
-write.table(bush_41, file = "data/bush_41.txt", sep = "\t",row.names = FALSE)
+write.table(bush_41, file = "data/bush_41.txt", sep = "\t",row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 ```{r}
@@ -63,7 +61,7 @@ washington <- corpus %>%
   filter(X1 == "George Washington")%>%
   select(transcripts)
 
-write.table(washington, file = "data/washington.txt", sep = "\t",row.names = FALSE)
+write.table(washington, file = "data/washington.txt", sep = "\t",row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 ```{r}
@@ -71,7 +69,7 @@ adams <- corpus %>%
   filter(X1 == "John Adams")%>%
   select(transcripts)
 
-write.table(adams, file = "data/adams.txt", sep = "\t",row.names = FALSE)
+write.table(adams, file = "data/adams.txt", sep = "\t",row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 ```{r}
@@ -79,7 +77,7 @@ roosevelt <- corpus %>%
   filter(X1 == "Franklin D. Roosevelt")%>%
   select(transcripts)
 
-write.table(roosevelt, file = "data/roosevelt.txt", sep = "\t",row.names = FALSE)
+write.table(roosevelt, file = "data/roosevelt.txt", sep = "\t",row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 ```{r}
@@ -87,7 +85,7 @@ kennedy <- corpus %>%
   filter(X1 == "John F. Kennedy")%>%
   select(transcripts)
 
-write.table(kennedy, file = "data/kennedy.txt", sep = "\t",row.names = FALSE)
+write.table(kennedy, file = "data/kennedy.txt", sep = "\t",row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
 ```{r}
@@ -95,6 +93,6 @@ reagan <- corpus %>%
   filter(X1 == "Ronald Reagan")%>%
   select(transcripts)
 
-write.table(reagan, file = "data/reagan.txt", sep = "\t",row.names = FALSE)
+write.table(reagan, file = "data/reagan.txt", sep = "\t",row.names = FALSE, fileEncoding = "UTF-8")
 ```
 
