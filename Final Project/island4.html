@@ -1,0 +1,116 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "would", "label": "would", "shape": "dot"}, {"font": {"color": "white"}, "id": "government", "label": "government", "shape": "dot"}, {"font": {"color": "white"}, "id": "country", "label": "country", "shape": "dot"}, {"font": {"color": "white"}, "id": "must", "label": "must", "shape": "dot"}, {"font": {"color": "white"}, "id": "time", "label": "time", "shape": "dot"}, {"font": {"color": "white"}, "id": "one", "label": "one", "shape": "dot"}, {"font": {"color": "white"}, "id": "us", "label": "us", "shape": "dot"}, {"font": {"color": "white"}, "id": "also", "label": "also", "shape": "dot"}, {"font": {"color": "white"}, "id": "people", "label": "people", "shape": "dot"}, {"font": {"color": "white"}, "id": "every", "label": "every", "shape": "dot"}, {"font": {"color": "white"}, "id": "nation", "label": "nation", "shape": "dot"}]);
+        edges = new vis.DataSet([{"from": "would", "to": "government"}, {"from": "would", "to": "country"}, {"from": "would", "to": "must"}, {"from": "would", "to": "time"}, {"from": "would", "to": "one"}, {"from": "would", "to": "us"}, {"from": "would", "to": "also"}, {"from": "would", "to": "people"}, {"from": "would", "to": "every"}, {"from": "would", "to": "nation"}, {"from": "government", "to": "country"}, {"from": "government", "to": "must"}, {"from": "government", "to": "time"}, {"from": "government", "to": "one"}, {"from": "government", "to": "us"}, {"from": "government", "to": "also"}, {"from": "government", "to": "people"}, {"from": "government", "to": "every"}, {"from": "government", "to": "nation"}, {"from": "country", "to": "must"}, {"from": "country", "to": "time"}, {"from": "country", "to": "one"}, {"from": "country", "to": "us"}, {"from": "country", "to": "also"}, {"from": "country", "to": "people"}, {"from": "country", "to": "every"}, {"from": "country", "to": "nation"}, {"from": "must", "to": "time"}, {"from": "must", "to": "one"}, {"from": "must", "to": "us"}, {"from": "must", "to": "also"}, {"from": "must", "to": "people"}, {"from": "must", "to": "every"}, {"from": "must", "to": "nation"}, {"from": "time", "to": "one"}, {"from": "time", "to": "us"}, {"from": "time", "to": "also"}, {"from": "time", "to": "people"}, {"from": "time", "to": "every"}, {"from": "time", "to": "nation"}, {"from": "one", "to": "us"}, {"from": "one", "to": "also"}, {"from": "one", "to": "people"}, {"from": "one", "to": "every"}, {"from": "one", "to": "nation"}, {"from": "us", "to": "also"}, {"from": "us", "to": "people"}, {"from": "us", "to": "every"}, {"from": "us", "to": "nation"}, {"from": "also", "to": "people"}, {"from": "also", "to": "every"}, {"from": "also", "to": "nation"}, {"from": "people", "to": "every"}, {"from": "people", "to": "nation"}, {"from": "every", "to": "nation"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -80000,
+            "springConstant": 0.001,
+            "springLength": 250
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

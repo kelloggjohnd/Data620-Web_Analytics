@@ -1,0 +1,116 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #222222;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"font": {"color": "white"}, "id": "country", "label": "country", "shape": "dot"}, {"font": {"color": "white"}, "id": "peace", "label": "peace", "shape": "dot"}, {"font": {"color": "white"}, "id": "congress", "label": "congress", "shape": "dot"}, {"font": {"color": "white"}, "id": "also", "label": "also", "shape": "dot"}, {"font": {"color": "white"}, "id": "war", "label": "war", "shape": "dot"}, {"font": {"color": "white"}, "id": "know", "label": "know", "shape": "dot"}, {"font": {"color": "white"}, "id": "year", "label": "year", "shape": "dot"}, {"font": {"color": "white"}, "id": "must", "label": "must", "shape": "dot"}, {"font": {"color": "white"}, "id": "united", "label": "united", "shape": "dot"}, {"font": {"color": "white"}, "id": "well", "label": "well", "shape": "dot"}, {"font": {"color": "white"}, "id": "first", "label": "first", "shape": "dot"}, {"font": {"color": "white"}, "id": "great", "label": "great", "shape": "dot"}, {"font": {"color": "white"}, "id": "let", "label": "let", "shape": "dot"}, {"font": {"color": "white"}, "id": "every", "label": "every", "shape": "dot"}, {"font": {"color": "white"}, "id": "new", "label": "new", "shape": "dot"}, {"font": {"color": "white"}, "id": "time", "label": "time", "shape": "dot"}, {"font": {"color": "white"}, "id": "american", "label": "american", "shape": "dot"}, {"font": {"color": "white"}, "id": "make", "label": "make", "shape": "dot"}, {"font": {"color": "white"}, "id": "world", "label": "world", "shape": "dot"}, {"font": {"color": "white"}, "id": "us", "label": "us", "shape": "dot"}, {"font": {"color": "white"}, "id": "work", "label": "work", "shape": "dot"}, {"font": {"color": "white"}, "id": "years", "label": "years", "shape": "dot"}, {"font": {"color": "white"}, "id": "america", "label": "america", "shape": "dot"}, {"font": {"color": "white"}, "id": "government", "label": "government", "shape": "dot"}, {"font": {"color": "white"}, "id": "nation", "label": "nation", "shape": "dot"}, {"font": {"color": "white"}, "id": "would", "label": "would", "shape": "dot"}, {"font": {"color": "white"}, "id": "states", "label": "states", "shape": "dot"}, {"font": {"color": "white"}, "id": "today", "label": "today", "shape": "dot"}, {"font": {"color": "white"}, "id": "many", "label": "many", "shape": "dot"}, {"font": {"color": "white"}, "id": "people", "label": "people", "shape": "dot"}, {"font": {"color": "white"}, "id": "one", "label": "one", "shape": "dot"}, {"font": {"color": "white"}, "id": "want", "label": "want", "shape": "dot"}]);
+        edges = new vis.DataSet([{"from": "country", "to": "peace"}, {"from": "country", "to": "congress"}, {"from": "country", "to": "also"}, {"from": "country", "to": "war"}, {"from": "country", "to": "know"}, {"from": "country", "to": "year"}, {"from": "country", "to": "must"}, {"from": "country", "to": "united"}, {"from": "country", "to": "well"}, {"from": "country", "to": "first"}, {"from": "country", "to": "great"}, {"from": "country", "to": "let"}, {"from": "country", "to": "every"}, {"from": "country", "to": "new"}, {"from": "country", "to": "time"}, {"from": "country", "to": "american"}, {"from": "country", "to": "make"}, {"from": "country", "to": "world"}, {"from": "country", "to": "us"}, {"from": "country", "to": "work"}, {"from": "country", "to": "years"}, {"from": "country", "to": "america"}, {"from": "country", "to": "government"}, {"from": "country", "to": "nation"}, {"from": "country", "to": "would"}, {"from": "country", "to": "states"}, {"from": "country", "to": "today"}, {"from": "country", "to": "many"}, {"from": "country", "to": "people"}, {"from": "country", "to": "one"}, {"from": "country", "to": "want"}, {"from": "peace", "to": "congress"}, {"from": "peace", "to": "also"}, {"from": "peace", "to": "war"}, {"from": "peace", "to": "know"}, {"from": "peace", "to": "year"}, {"from": "peace", "to": "must"}, {"from": "peace", "to": "united"}, {"from": "peace", "to": "well"}, {"from": "peace", "to": "first"}, {"from": "peace", "to": "great"}, {"from": "peace", "to": "every"}, {"from": "peace", "to": "new"}, {"from": "peace", "to": "time"}, {"from": "peace", "to": "american"}, {"from": "peace", "to": "make"}, {"from": "peace", "to": "world"}, {"from": "peace", "to": "us"}, {"from": "peace", "to": "years"}, {"from": "peace", "to": "america"}, {"from": "peace", "to": "government"}, {"from": "peace", "to": "nation"}, {"from": "peace", "to": "would"}, {"from": "peace", "to": "states"}, {"from": "peace", "to": "today"}, {"from": "peace", "to": "many"}, {"from": "peace", "to": "people"}, {"from": "peace", "to": "one"}, {"from": "congress", "to": "also"}, {"from": "congress", "to": "must"}, {"from": "congress", "to": "every"}, {"from": "congress", "to": "time"}, {"from": "congress", "to": "us"}, {"from": "congress", "to": "government"}, {"from": "congress", "to": "nation"}, {"from": "congress", "to": "would"}, {"from": "congress", "to": "people"}, {"from": "congress", "to": "one"}, {"from": "also", "to": "war"}, {"from": "also", "to": "know"}, {"from": "also", "to": "year"}, {"from": "also", "to": "must"}, {"from": "also", "to": "united"}, {"from": "also", "to": "well"}, {"from": "also", "to": "first"}, {"from": "also", "to": "great"}, {"from": "also", "to": "let"}, {"from": "also", "to": "every"}, {"from": "also", "to": "new"}, {"from": "also", "to": "time"}, {"from": "also", "to": "american"}, {"from": "also", "to": "make"}, {"from": "also", "to": "world"}, {"from": "also", "to": "us"}, {"from": "also", "to": "work"}, {"from": "also", "to": "years"}, {"from": "also", "to": "america"}, {"from": "also", "to": "government"}, {"from": "also", "to": "nation"}, {"from": "also", "to": "would"}, {"from": "also", "to": "states"}, {"from": "also", "to": "today"}, {"from": "also", "to": "many"}, {"from": "also", "to": "people"}, {"from": "also", "to": "one"}, {"from": "also", "to": "want"}, {"from": "war", "to": "know"}, {"from": "war", "to": "year"}, {"from": "war", "to": "must"}, {"from": "war", "to": "united"}, {"from": "war", "to": "well"}, {"from": "war", "to": "great"}, {"from": "war", "to": "every"}, {"from": "war", "to": "new"}, {"from": "war", "to": "time"}, {"from": "war", "to": "american"}, {"from": "war", "to": "make"}, {"from": "war", "to": "world"}, {"from": "war", "to": "us"}, {"from": "war", "to": "years"}, {"from": "war", "to": "america"}, {"from": "war", "to": "government"}, {"from": "war", "to": "nation"}, {"from": "war", "to": "would"}, {"from": "war", "to": "states"}, {"from": "war", "to": "today"}, {"from": "war", "to": "many"}, {"from": "war", "to": "people"}, {"from": "war", "to": "one"}, {"from": "know", "to": "year"}, {"from": "know", "to": "must"}, {"from": "know", "to": "united"}, {"from": "know", "to": "well"}, {"from": "know", "to": "first"}, {"from": "know", "to": "let"}, {"from": "know", "to": "every"}, {"from": "know", "to": "new"}, {"from": "know", "to": "time"}, {"from": "know", "to": "american"}, {"from": "know", "to": "make"}, {"from": "know", "to": "world"}, {"from": "know", "to": "us"}, {"from": "know", "to": "work"}, {"from": "know", "to": "years"}, {"from": "know", "to": "america"}, {"from": "know", "to": "government"}, {"from": "know", "to": "nation"}, {"from": "know", "to": "would"}, {"from": "know", "to": "states"}, {"from": "know", "to": "today"}, {"from": "know", "to": "many"}, {"from": "know", "to": "people"}, {"from": "know", "to": "one"}, {"from": "know", "to": "want"}, {"from": "year", "to": "must"}, {"from": "year", "to": "united"}, {"from": "year", "to": "well"}, {"from": "year", "to": "first"}, {"from": "year", "to": "let"}, {"from": "year", "to": "every"}, {"from": "year", "to": "new"}, {"from": "year", "to": "time"}, {"from": "year", "to": "american"}, {"from": "year", "to": "make"}, {"from": "year", "to": "world"}, {"from": "year", "to": "us"}, {"from": "year", "to": "work"}, {"from": "year", "to": "years"}, {"from": "year", "to": "america"}, {"from": "year", "to": "government"}, {"from": "year", "to": "nation"}, {"from": "year", "to": "would"}, {"from": "year", "to": "states"}, {"from": "year", "to": "today"}, {"from": "year", "to": "many"}, {"from": "year", "to": "people"}, {"from": "year", "to": "one"}, {"from": "year", "to": "want"}, {"from": "must", "to": "united"}, {"from": "must", "to": "well"}, {"from": "must", "to": "first"}, {"from": "must", "to": "great"}, {"from": "must", "to": "let"}, {"from": "must", "to": "every"}, {"from": "must", "to": "new"}, {"from": "must", "to": "time"}, {"from": "must", "to": "american"}, {"from": "must", "to": "make"}, {"from": "must", "to": "world"}, {"from": "must", "to": "us"}, {"from": "must", "to": "work"}, {"from": "must", "to": "years"}, {"from": "must", "to": "america"}, {"from": "must", "to": "government"}, {"from": "must", "to": "nation"}, {"from": "must", "to": "would"}, {"from": "must", "to": "states"}, {"from": "must", "to": "today"}, {"from": "must", "to": "many"}, {"from": "must", "to": "people"}, {"from": "must", "to": "one"}, {"from": "must", "to": "want"}, {"from": "united", "to": "well"}, {"from": "united", "to": "great"}, {"from": "united", "to": "every"}, {"from": "united", "to": "new"}, {"from": "united", "to": "time"}, {"from": "united", "to": "american"}, {"from": "united", "to": "make"}, {"from": "united", "to": "world"}, {"from": "united", "to": "us"}, {"from": "united", "to": "years"}, {"from": "united", "to": "america"}, {"from": "united", "to": "government"}, {"from": "united", "to": "nation"}, {"from": "united", "to": "would"}, {"from": "united", "to": "states"}, {"from": "united", "to": "today"}, {"from": "united", "to": "many"}, {"from": "united", "to": "people"}, {"from": "united", "to": "one"}, {"from": "well", "to": "great"}, {"from": "well", "to": "every"}, {"from": "well", "to": "new"}, {"from": "well", "to": "time"}, {"from": "well", "to": "american"}, {"from": "well", "to": "make"}, {"from": "well", "to": "world"}, {"from": "well", "to": "us"}, {"from": "well", "to": "years"}, {"from": "well", "to": "america"}, {"from": "well", "to": "government"}, {"from": "well", "to": "nation"}, {"from": "well", "to": "would"}, {"from": "well", "to": "states"}, {"from": "well", "to": "today"}, {"from": "well", "to": "many"}, {"from": "well", "to": "people"}, {"from": "well", "to": "one"}, {"from": "first", "to": "every"}, {"from": "first", "to": "new"}, {"from": "first", "to": "time"}, {"from": "first", "to": "american"}, {"from": "first", "to": "make"}, {"from": "first", "to": "world"}, {"from": "first", "to": "us"}, {"from": "first", "to": "years"}, {"from": "first", "to": "america"}, {"from": "first", "to": "government"}, {"from": "first", "to": "nation"}, {"from": "first", "to": "would"}, {"from": "first", "to": "today"}, {"from": "first", "to": "many"}, {"from": "first", "to": "people"}, {"from": "first", "to": "one"}, {"from": "great", "to": "every"}, {"from": "great", "to": "time"}, {"from": "great", "to": "us"}, {"from": "great", "to": "government"}, {"from": "great", "to": "nation"}, {"from": "great", "to": "would"}, {"from": "great", "to": "states"}, {"from": "great", "to": "people"}, {"from": "great", "to": "one"}, {"from": "let", "to": "every"}, {"from": "let", "to": "new"}, {"from": "let", "to": "time"}, {"from": "let", "to": "american"}, {"from": "let", "to": "make"}, {"from": "let", "to": "world"}, {"from": "let", "to": "us"}, {"from": "let", "to": "years"}, {"from": "let", "to": "america"}, {"from": "let", "to": "government"}, {"from": "let", "to": "nation"}, {"from": "let", "to": "would"}, {"from": "let", "to": "today"}, {"from": "let", "to": "many"}, {"from": "let", "to": "people"}, {"from": "let", "to": "one"}, {"from": "let", "to": "want"}, {"from": "every", "to": "new"}, {"from": "every", "to": "time"}, {"from": "every", "to": "american"}, {"from": "every", "to": "make"}, {"from": "every", "to": "world"}, {"from": "every", "to": "us"}, {"from": "every", "to": "work"}, {"from": "every", "to": "years"}, {"from": "every", "to": "america"}, {"from": "every", "to": "government"}, {"from": "every", "to": "nation"}, {"from": "every", "to": "would"}, {"from": "every", "to": "states"}, {"from": "every", "to": "today"}, {"from": "every", "to": "many"}, {"from": "every", "to": "people"}, {"from": "every", "to": "one"}, {"from": "every", "to": "want"}, {"from": "new", "to": "time"}, {"from": "new", "to": "american"}, {"from": "new", "to": "make"}, {"from": "new", "to": "world"}, {"from": "new", "to": "us"}, {"from": "new", "to": "work"}, {"from": "new", "to": "years"}, {"from": "new", "to": "america"}, {"from": "new", "to": "government"}, {"from": "new", "to": "nation"}, {"from": "new", "to": "would"}, {"from": "new", "to": "states"}, {"from": "new", "to": "today"}, {"from": "new", "to": "many"}, {"from": "new", "to": "people"}, {"from": "new", "to": "one"}, {"from": "new", "to": "want"}, {"from": "time", "to": "american"}, {"from": "time", "to": "make"}, {"from": "time", "to": "world"}, {"from": "time", "to": "us"}, {"from": "time", "to": "work"}, {"from": "time", "to": "years"}, {"from": "time", "to": "america"}, {"from": "time", "to": "government"}, {"from": "time", "to": "nation"}, {"from": "time", "to": "would"}, {"from": "time", "to": "states"}, {"from": "time", "to": "today"}, {"from": "time", "to": "many"}, {"from": "time", "to": "people"}, {"from": "time", "to": "one"}, {"from": "time", "to": "want"}, {"from": "american", "to": "make"}, {"from": "american", "to": "world"}, {"from": "american", "to": "us"}, {"from": "american", "to": "work"}, {"from": "american", "to": "years"}, {"from": "american", "to": "america"}, {"from": "american", "to": "government"}, {"from": "american", "to": "nation"}, {"from": "american", "to": "would"}, {"from": "american", "to": "states"}, {"from": "american", "to": "today"}, {"from": "american", "to": "many"}, {"from": "american", "to": "people"}, {"from": "american", "to": "one"}, {"from": "american", "to": "want"}, {"from": "make", "to": "world"}, {"from": "make", "to": "us"}, {"from": "make", "to": "work"}, {"from": "make", "to": "years"}, {"from": "make", "to": "america"}, {"from": "make", "to": "government"}, {"from": "make", "to": "nation"}, {"from": "make", "to": "would"}, {"from": "make", "to": "states"}, {"from": "make", "to": "today"}, {"from": "make", "to": "many"}, {"from": "make", "to": "people"}, {"from": "make", "to": "one"}, {"from": "make", "to": "want"}, {"from": "world", "to": "us"}, {"from": "world", "to": "work"}, {"from": "world", "to": "years"}, {"from": "world", "to": "america"}, {"from": "world", "to": "government"}, {"from": "world", "to": "nation"}, {"from": "world", "to": "would"}, {"from": "world", "to": "states"}, {"from": "world", "to": "today"}, {"from": "world", "to": "many"}, {"from": "world", "to": "people"}, {"from": "world", "to": "one"}, {"from": "world", "to": "want"}, {"from": "us", "to": "work"}, {"from": "us", "to": "years"}, {"from": "us", "to": "america"}, {"from": "us", "to": "government"}, {"from": "us", "to": "nation"}, {"from": "us", "to": "would"}, {"from": "us", "to": "states"}, {"from": "us", "to": "today"}, {"from": "us", "to": "many"}, {"from": "us", "to": "people"}, {"from": "us", "to": "one"}, {"from": "us", "to": "want"}, {"from": "work", "to": "years"}, {"from": "work", "to": "america"}, {"from": "work", "to": "government"}, {"from": "work", "to": "nation"}, {"from": "work", "to": "would"}, {"from": "work", "to": "today"}, {"from": "work", "to": "many"}, {"from": "work", "to": "people"}, {"from": "work", "to": "one"}, {"from": "years", "to": "america"}, {"from": "years", "to": "government"}, {"from": "years", "to": "nation"}, {"from": "years", "to": "would"}, {"from": "years", "to": "states"}, {"from": "years", "to": "today"}, {"from": "years", "to": "many"}, {"from": "years", "to": "people"}, {"from": "years", "to": "one"}, {"from": "years", "to": "want"}, {"from": "america", "to": "government"}, {"from": "america", "to": "nation"}, {"from": "america", "to": "would"}, {"from": "america", "to": "states"}, {"from": "america", "to": "today"}, {"from": "america", "to": "many"}, {"from": "america", "to": "people"}, {"from": "america", "to": "one"}, {"from": "america", "to": "want"}, {"from": "government", "to": "nation"}, {"from": "government", "to": "would"}, {"from": "government", "to": "states"}, {"from": "government", "to": "today"}, {"from": "government", "to": "many"}, {"from": "government", "to": "people"}, {"from": "government", "to": "one"}, {"from": "government", "to": "want"}, {"from": "nation", "to": "would"}, {"from": "nation", "to": "states"}, {"from": "nation", "to": "today"}, {"from": "nation", "to": "many"}, {"from": "nation", "to": "people"}, {"from": "nation", "to": "one"}, {"from": "nation", "to": "want"}, {"from": "would", "to": "states"}, {"from": "would", "to": "today"}, {"from": "would", "to": "many"}, {"from": "would", "to": "people"}, {"from": "would", "to": "one"}, {"from": "would", "to": "want"}, {"from": "states", "to": "today"}, {"from": "states", "to": "many"}, {"from": "states", "to": "people"}, {"from": "states", "to": "one"}, {"from": "today", "to": "many"}, {"from": "today", "to": "people"}, {"from": "today", "to": "one"}, {"from": "today", "to": "want"}, {"from": "many", "to": "people"}, {"from": "many", "to": "one"}, {"from": "many", "to": "want"}, {"from": "people", "to": "one"}, {"from": "people", "to": "want"}, {"from": "one", "to": "want"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.3,
+            "damping": 0.09,
+            "gravitationalConstant": -80000,
+            "springConstant": 0.001,
+            "springLength": 250
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
